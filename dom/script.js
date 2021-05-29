@@ -4,6 +4,9 @@ var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
 var lis = document.getElementById("totalList").children;
 
+
+
+
 function inputLength() {
   return input.value.length;
 }
@@ -46,14 +49,19 @@ function decideClickFunction(event) {
 /* CODE EXECUTION */
 
 for (var i = 0; i < lis.length; i++) {
+  // CHECKBOX CREATION
+  var checkbox = document.createElement("input");
+checkbox.type = "checkbox";
+  lis[i].appendChild(checkbox);
+
+  // EVENT LISTENER
   lis[i].addEventListener(
     "click",
     function (event) {
-      console.log(event.target.tagName)
+      console.log(event.target.tagName);
       if (event.target.tagName === "LI") {
-        console.log('si se ejecuto')
+        console.log("si se ejecuto");
         event.target.classList.toggle("done");
-      
       }
     },
     false
