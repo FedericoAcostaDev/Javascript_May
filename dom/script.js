@@ -4,9 +4,6 @@ var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
 var lis = document.getElementById("totalList").children;
 
-
-
-
 function inputLength() {
   return input.value.length;
 }
@@ -51,7 +48,17 @@ function decideClickFunction(event) {
 for (var i = 0; i < lis.length; i++) {
   // CHECKBOX CREATION
   var checkbox = document.createElement("input");
-checkbox.type = "checkbox";
+
+  checkbox.addEventListener("change", function (event) {
+    if (event.target.checked) {
+      //remove child method
+      ul.removeChild(event.target.parentElement)
+      console.log('remove was executed')
+    } else {
+      console.log("Checkbox is not checked..");
+    }
+  });
+  checkbox.type = "checkbox";
   lis[i].appendChild(checkbox);
 
   // EVENT LISTENER
